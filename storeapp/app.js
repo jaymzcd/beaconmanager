@@ -10,6 +10,8 @@ var io = require('socket.io').listen(server);
 app.use('/static', express.static(__dirname + '/static'));
 app.use(express.urlencoded());
 
+var settings = JSON.parse(fs.readFileSync(__dirname + '/settings.json'));
+
 var users = 0;
 
 Bleacon.on('discover', function(bleacon) {
@@ -46,7 +48,8 @@ app.post('/', function(req, res){
   var data = querystring.stringify({
         uuid: req.body.uuid,
         major: req.body.major,
-        minor: req.body.minor
+        minor: req.body.minor,
+        location: settings.store_id
       });
 
   var options = {

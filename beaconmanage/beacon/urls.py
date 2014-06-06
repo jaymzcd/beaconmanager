@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
-from .views import BeaconCreateView
+from .views import BeaconAddView
 
 
 urlpatterns = patterns('',
-    url(r'^add/', BeaconCreateView.as_view(), name='add'),
+    url(r'^add/', BeaconAddView.as_view(), name='add'),
 )

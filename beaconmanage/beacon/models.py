@@ -5,6 +5,8 @@ from django.core.urlresolvers import reverse
 class Location(models.Model):
     name = models.CharField(max_length=200)
     code = models.CharField(max_length=50)
+    latitude = models.CharField(max_length=100, blank=True, null=True)
+    longitude = models.CharField(max_length=100, blank=True, null=True)
 
     def __unicode__(self):
         return '{}'.format(self.name)
@@ -18,6 +20,7 @@ class Beacon(models.Model):
     longitude = models.CharField(max_length=100, blank=True, null=True)
     metadata = models.TextField(blank=True, null=True)
     last_checkin = models.DateTimeField(auto_now=True)
+    request_count = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
