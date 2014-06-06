@@ -3,3 +3,7 @@ static/js/libs/
 static/css/libs/
 static/bootstrap/
 db.sqlite3
+doc/*.log
+doc/*tex.gz
+doc/*.aux
+doc/*.pdf
