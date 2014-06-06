@@ -1,11 +1,14 @@
 var express = require('express');
 var Bleacon = require('bleacon');
 var app = express();
+var fs = require('fs');
 var http = require('http');
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
 app.use('/static', express.static(__dirname + '/static'));
+app.use(express.urlencoded());
+
 var users = 0;
 
 Bleacon.on('discover', function(bleacon) {
@@ -14,6 +17,24 @@ Bleacon.on('discover', function(bleacon) {
 });
 
 Bleacon.startScanning();
+
+app.get('/uuid/:beacon/:major/:minor/', function(req, res){
+  res.sendfile('templates/beacon.html');
+});
+
+app.post('/uuid/:beacon/:major/:minor/', function(req, res){
+    var filePath = __dirname + '/public/' + req.params.beacon + '.json';
+    fs.writeFile(filePath, req.body.data, function () {
+        res.redirect('/data/' + req.params.beacon + '/' + req.params.major + '/' + req.params.minor + '/');
+    });
+});
+
+app.get('/data/:beacon/:major/:minor/', function(req, res){
+  var filePath = __dirname + '/public/' + req.params.beacon + '.json';
+  fs.readFile(filePath, function(err, data) {
+    res.send(data);
+  });
+});
 
 app.get('/', function(req, res){
   res.sendfile('templates/index.html');

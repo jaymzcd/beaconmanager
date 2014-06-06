@@ -7,7 +7,7 @@ socket.on('beacon', function(data){
   var beacon_html_id = beacon['uuid'] + '-' + beacon['major'] + '-' + beacon['minor'];
   var beacon_id_str = '#' + beacon_html_id;
   var beacon_item = '<div class="beacon beacon_rssi_' + rssi_bin + ' proximity_' + beacon['proximity'] + '" id="' + beacon_html_id + '"></div>';
-  var beacon_summary = '<ul><li>' + beacon['uuid'] + '</li><li>Major: ' + beacon['major'] + ', Minor: ' + beacon['minor'] + '</ul><div class="beacon_live_data"></div>';
+  var beacon_summary = '<ul><li><a href="/uuid/' + beacon['uuid'] + '/' + beacon['major'] + '/' + beacon['minor'] + '/' + '">' + beacon['uuid'] + '</a></li><li>Major: ' + beacon['major'] + ', Minor: ' + beacon['minor'] + '</ul><div class="beacon_live_data"></div>';
   var beacon_livedata = '<p>RSSI: ' + beacon['rssi'] + ' (<span class="beacon_proximity">' + beacon['proximity'] + '</span>) ';
   beacon_livedata += ', Last seen: ' + date.toLocaleTimeString() + '</p>';
 
