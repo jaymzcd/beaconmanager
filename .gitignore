@@ -7,3 +7,4 @@ dosc/*.log
 docs/*tex.gz
 docs/*.aux
 docs/*.pdf
+public/
