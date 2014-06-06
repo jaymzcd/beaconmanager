@@ -1,0 +1,25 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.beacons {
+    text-align: center;
+}
+
+.beacon {
+    margin: 1em;
+    display: none;
+    width: 400px;
+    height: 140px;
+    padding: 1em;
+    float: left;
+}
+
+.beacon ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.proximity_near {
+    color: #f20;
+}

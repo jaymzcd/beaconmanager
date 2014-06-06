@@ -1,0 +1,11 @@
+{
+  "name": "beacon-scan",
+  "description": "beacon stuff",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+    "bleacon": "0.2.x",
+    "socket.io": "1.x"
+  }
+}
