@@ -7,7 +7,7 @@ body {
 }
 
 .beacon {
-    margin: 1em;
+    margin: 1em 1em 1em 0;
     display: none;
     width: 400px;
     height: 140px;
@@ -20,6 +20,28 @@ body {
     padding: 0;
 }
 
-.proximity_near {
+.beacon_proximity {
     color: #f20;
+    text-transform: uppercase;
+}
+.proximity_far .beacon_proximity {
+    color: #fff;
+}
+
+#active_users {
+    font-style: italic;
+}
+
+.clear {
+    clear: both;
+}
+
+.proximity_far {
+    background-color: #e74c3c;
+}
+.proximity_near {
+    background-color: #f1c40f;;
+}
+.proximity_immediate {
+    background-color: #2ecc71;
 }
