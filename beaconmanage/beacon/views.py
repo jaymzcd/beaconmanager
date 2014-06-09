@@ -13,7 +13,7 @@ class BeaconAddView(CreateView):
 
     def post(self, request, *args, **kwargs):
         try:
-            beacon = Beacon.objects.get(uuid=request.POST['uuid'])
+            beacon = Beacon.objects.get(uuid=request.POST['uuid'], major=request.POST['major'], minor=request.POST['minor'])
             # Upate time
             beacon.save()
             return redirect(beacon.get_absolute_url())

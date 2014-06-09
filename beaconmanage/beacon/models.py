@@ -12,7 +12,7 @@ class Location(models.Model):
         return '{}'.format(self.name)
 
 class Beacon(models.Model):
-    uuid = models.CharField(max_length=128, unique=True)
+    uuid = models.CharField(max_length=128)
     major = models.CharField(max_length=10, blank=True, null=True)
     minor = models.CharField(max_length=10, blank=True, null=True)
     location = models.ForeignKey(Location, null=True, blank=True)
@@ -20,8 +20,11 @@ class Beacon(models.Model):
     longitude = models.CharField(max_length=100, blank=True, null=True)
     metadata = models.TextField(blank=True, null=True)
     last_checkin = models.DateTimeField(auto_now=True)
-    request_count = models.IntegerField(default=0)
+    request_count = models.IntegerField(default=0, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('uuid', 'major', 'minor')
 
     def __unicode__(self):
         return '{}'.format(self.uuid)

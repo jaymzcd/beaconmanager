@@ -1,4 +1,5 @@
 var socket = io();
+
 socket.on('beacon', function(data){
   var beacon = data['beacon'];
   var rssi_bin = Math.floor(Math.abs(beacon['rssi']) / 10);
@@ -30,7 +31,14 @@ socket.on('beacon', function(data){
     });
   }
 
+  $.post('/', {
+    uuid: beacon['uuid'],
+    major: beacon['major'],
+    minor: beacon['minor']
+  });
+
 });
+
 
 socket.on('users', function(data) {
   var label = data['count'];
